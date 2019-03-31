@@ -5,5 +5,5 @@ import "../../css/core.scss";
 
 export default function App() {
   document.title = "Calculator";
-  return <div className="pageWrapper">asd</div>;
+  return <div className="pageWrapper">asasdd</div>;
 }
