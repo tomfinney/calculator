@@ -22,7 +22,7 @@ body {
   background-color: $colorWhite;
   color: $colorBlack;
   margin: 0;
-  font-family: $fontFamily, sans-serif;
+  font-family: $fontFamily;
   line-height: 1;
 }
 
@@ -76,7 +76,7 @@ body {
 
 .calculatorBar {
   background-color: $colorWhite;
-  text-align: center;
+  text-align: right;
   padding: $smallGutter $largerGutter;
   border-top-left-radius: $radius;
   border-top-right-radius: $radius;
@@ -86,8 +86,80 @@ body {
 .calculatorInner {
   padding: 0 $smallestGutter $smallestGutter 0;
 }
+
 .calculatorContent {
   @include dotsBg(3px, 1px);
-  padding: $largerGutter;
+  padding: $normalGutter;
   border-radius: $radius;
+  font-family: "Geneva";
+  font-size: 21px;
+}
+
+.calculatorDisplay {
+  border: 1px solid $colorBlack;
+  background-color: $colorWhite;
+  text-align: right;
+  padding: $smallestGutter;
+  margin-bottom: $smallGutter;
+}
+
+.calculatorRow {
+  display: flex;
+  margin-left: -#{$smallGutter};
+  margin-bottom: 12px;
+
+  &--last {
+    margin-bottom: 0;
+  }
+}
+
+.calculatorColumns {
+  display: flex;
+}
+
+.calculatorBtn {
+  padding: $smallGutter $normalGutter;
+  background-color: $colorWhite;
+  border: 1px solid $colorBlack;
+  margin-left: $smallGutter;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  position: relative;
+
+  &:before {
+    content: "";
+    background-color: $colorBlack;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    left: 2px;
+    bottom: -5px;
+  }
+
+  &:after {
+    content: "";
+    background-color: $colorBlack;
+    position: absolute;
+    width: 4px;
+    height: calc(100% + 3px);
+    position: absolute;
+    right: -5px;
+    top: 2px;
+  }
+
+  &--wide {
+    width: 88px;
+    text-align: left;
+  }
+
+  &--tall {
+    height: 92px;
+    line-height: 6.7;
+  }
+
+  &--bottom {
+    line-height: 1.4;
+  }
 }
