@@ -7,120 +7,13 @@
 }
 
 body {
-  background-color: $colorGreyLight;
+  background-color: $colorWhite;
   color: $colorText;
   margin: 0;
   font-family: $fontFamily, sans-serif;
   line-height: 1.6;
 }
 
-img {
-  max-width: 100%;
-}
-
-.circle {
-  border-radius: 50%;
-}
-
-.translucent {
-  opacity: 0.33;
-}
-
 .pageWrapper {
   min-height: 100vh;
-}
-
-.btn {
-  padding: $smallGutter $largeGutter;
-  color: $colorText;
-  text-decoration: none;
-  border: 2px solid $colorText;
-  display: inline-block;
-  cursor: pointer;
-  transition: $transitionSpeed;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-}
-
-.articleContainer {
-  @media (min-width: 900px) {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-}
-
-.articleText {
-  max-width: 700px;
-}
-
-.articleAside {
-  @media (min-width: 900px) {
-    margin-left: $largeGutter;
-    width: 250px;
-  }
-}
-
-.articleAsideLinks {
-  a {
-    display: block;
-  }
-}
-
-.contentTeaserPanel {
-  padding: $largeGutter 0;
-
-  h2 {
-    margin: 0 0 $largeGutter;
-    color: $colorText;
-  }
-}
-
-.contentTeasers {
-  display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
-  margin-left: -#{$largeGutter};
-}
-
-.contentTeaser {
-  margin-bottom: $largeGutter;
-  background-color: $colorWhite;
-  margin-left: $largeGutter;
-
-  @media (min-width: 900px) {
-    width: calc(33.33% - #{$largeGutter});
-  }
-
-  @media (max-width: 899px) and (min-width: 500px) {
-    width: calc(50% - #{$largeGutter});
-  }
-
-  @media (max-width: 499px) {
-    width: calc(100% - #{$largeGutter});
-  }
-
-  &__imgContainer {
-    height: 200px;
-    padding: $normalGutter;
-  }
-
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-
-  &__content {
-    padding: $largeGutter;
-  }
-
-  h3 {
-    margin: 0 0 $largeGutter;
-  }
-
-  p {
-    margin: 0 0 $largeGutter;
-  }
 }
