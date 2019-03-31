@@ -27,6 +27,20 @@ export default function App() {
 
 function Calculator() {
   const [calculation, setCalculation] = useState(0);
+
+  const row1 = ["C", "E", "=", "*"];
+  const row2 = [7, 8, 9, "/"];
+  const row3 = [4, 5, 6, "-"];
+  const row4 = [1, 2, 3];
+
+  function handleKeyPress(key) {
+    if (key === "C") {
+      setCalculation(0);
+      return;
+    }
+    setCalculation(`${calculation}${key}`);
+  }
+
   return (
     <div className="calculator">
       <div className="calculatorBar">Calculator</div>
@@ -34,36 +48,72 @@ function Calculator() {
         <div className="calculatorContent">
           <div className="calculatorDisplay">{calculation}</div>
           <div className="calculatorRow">
-            <div className="calculatorBtn">C</div>
-            <div className="calculatorBtn">E</div>
-            <div className="calculatorBtn">=</div>
-            <div className="calculatorBtn">*</div>
+            {row1.map(key => (
+              <div
+                key={key}
+                className="calculatorBtn"
+                onClick={() => handleKeyPress(key)}
+              >
+                {key}
+              </div>
+            ))}
           </div>
           <div className="calculatorRow">
-            <div className="calculatorBtn">7</div>
-            <div className="calculatorBtn">8</div>
-            <div className="calculatorBtn">9</div>
-            <div className="calculatorBtn">/</div>
+            {row2.map(key => (
+              <div
+                key={key}
+                className="calculatorBtn"
+                onClick={() => handleKeyPress(key)}
+              >
+                {key}
+              </div>
+            ))}
           </div>
           <div className="calculatorRow">
-            <div className="calculatorBtn">4</div>
-            <div className="calculatorBtn">5</div>
-            <div className="calculatorBtn">6</div>
-            <div className="calculatorBtn">-</div>
+            {row3.map(key => (
+              <div
+                key={key}
+                className="calculatorBtn"
+                onClick={() => handleKeyPress(key)}
+              >
+                {key}
+              </div>
+            ))}
           </div>
           <div className="calculatorColumns">
             <div>
               <div className="calculatorRow">
-                <div className="calculatorBtn">1</div>
-                <div className="calculatorBtn">2</div>
-                <div className="calculatorBtn">3</div>
+                {row4.map(key => (
+                  <div
+                    key={key}
+                    className="calculatorBtn"
+                    onClick={() => handleKeyPress(key)}
+                  >
+                    {key}
+                  </div>
+                ))}
               </div>
               <div className="calculatorRow calculatorRow--last">
-                <div className="calculatorBtn calculatorBtn--wide">0</div>
-                <div className="calculatorBtn calculatorBtn--bottom">.</div>
+                <div
+                  className="calculatorBtn calculatorBtn--wide"
+                  onClick={() => handleKeyPress(0)}
+                >
+                  0
+                </div>
+                <div
+                  className="calculatorBtn calculatorBtn--bottom"
+                  onClick={() => handleKeyPress(".")}
+                >
+                  .
+                </div>
               </div>
             </div>
-            <div className="calculatorBtn calculatorBtn--tall">+</div>
+            <div
+              className="calculatorBtn calculatorBtn--tall"
+              onClick={() => handleKeyPress("+")}
+            >
+              +
+            </div>
           </div>
         </div>
       </div>

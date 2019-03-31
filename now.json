@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "name": "toms website",
-  "alias": ["tomfinney.com"],
+  "name": "mac sys calc 1.0",
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "routes": [
-    { "src": "/(.+)(png|md|svg|css|map|jpg|js|txt)", "dest": "/$1$2" },
+    { "src": "/(.+)(png|md|svg|css|map|jpg|js|txt|ttf)", "dest": "/$1$2" },
     { "src": "/.*", "dest": "/index.html" }
   ]
 }
