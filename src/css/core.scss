@@ -1,5 +1,17 @@
 @import "./_vars";
 
+@mixin dotsBg($space, $size) {
+  background: linear-gradient(
+        90deg,
+        $colorWhite ($space - $size),
+        transparent 1%
+      )
+      center,
+    linear-gradient($colorWhite ($space - $size), transparent 1%) center,
+    $colorBlack;
+  background-size: $space $space;
+}
+
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -11,9 +23,71 @@ body {
   color: $colorBlack;
   margin: 0;
   font-family: $fontFamily, sans-serif;
-  line-height: 1.6;
+  line-height: 1;
 }
 
 .pageWrapper {
-  min-height: 100vh;
+  height: 100vh;
+  border: 10px solid $colorBlack;
+  position: relative;
+}
+
+.pageInner {
+  @include dotsBg(2px, 1px);
+  z-index: 2;
+  height: calc(100% + 8px);
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 8px);
+  border-radius: $radius;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: $smallGutter $largerGutter;
+  border-bottom: 1px solid $colorBlack;
+  background-color: $colorWhite;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+
+  > * + * {
+    margin-left: $largeGutter;
+  }
+
+  img {
+    height: 16px;
+  }
+}
+
+.main {
+  height: calc(100% - 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  background-color: $colorBlack;
+  border-radius: $radius;
+  border: 1px solid $colorBlack;
+}
+
+.calculatorBar {
+  background-color: $colorWhite;
+  text-align: center;
+  padding: $smallGutter $largerGutter;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  border-bottom: 1px solid $colorBlack;
+}
+
+.calculatorInner {
+  padding: 0 $smallestGutter $smallestGutter 0;
+}
+.calculatorContent {
+  @include dotsBg(3px, 1px);
+  padding: $largerGutter;
+  border-radius: $radius;
 }
