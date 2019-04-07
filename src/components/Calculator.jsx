@@ -1,30 +1,5 @@
 import React, { useState } from "react";
 
-import "../../css/normalize.scss";
-import "../../css/core.scss";
-
-import appleSvg from "../../assets/apple.svg";
-
-export default function App() {
-  document.title = "Calculator";
-  return (
-    <div className="pageWrapper">
-      <div className="pageInner">
-        <header className="header">
-          <img src={appleSvg} alt="the Apple logo" />
-          <span>File</span>
-          <span>Edit</span>
-          <span>View</span>
-          <span>Special</span>
-        </header>
-        <main className="main">
-          <Calculator />
-        </main>
-      </div>
-    </div>
-  );
-}
-
 const row1 = ["C", "E", "=", "*"];
 const row2 = ["7", "8", "9", "/"];
 const row3 = ["4", "5", "6", "-"];
@@ -32,7 +7,7 @@ const row4 = ["1", "2", "3"];
 
 const operators = ["+", "-", "/", "+"];
 
-function Calculator() {
+export default function Calculator() {
   const [calculation, setCalculation] = useState("0");
   const [parts, setParts] = useState([]);
 
