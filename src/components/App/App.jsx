@@ -25,17 +25,42 @@ export default function App() {
   );
 }
 
-function Calculator() {
-  const [calculation, setCalculation] = useState(0);
+const row1 = ["C", "E", "=", "*"];
+const row2 = ["7", "8", "9", "/"];
+const row3 = ["4", "5", "6", "-"];
+const row4 = ["1", "2", "3"];
 
-  const row1 = ["C", "E", "=", "*"];
-  const row2 = [7, 8, 9, "/"];
-  const row3 = [4, 5, 6, "-"];
-  const row4 = [1, 2, 3];
+const operators = ["+", "-", "/", "+"];
+
+function Calculator() {
+  const [calculation, setCalculation] = useState("0");
+  const [parts, setParts] = useState([]);
+
+  function calculate(parts) {
+    setCalculation(eval(parts.join("")));
+    setParts([]);
+  }
 
   function handleKeyPress(key) {
+    if (key === "=") {
+      calculate([...parts, calculation]);
+      return;
+    }
+    if (operators.includes(key)) {
+      setParts([...parts, calculation, key]);
+      setCalculation("0");
+      return;
+    }
     if (key === "C") {
-      setCalculation(0);
+      setCalculation("0");
+      setParts([]);
+      return;
+    }
+    if (key === "." && calculation.includes(".")) {
+      return;
+    }
+    if (key !== "." && calculation === "0") {
+      setCalculation(key);
       return;
     }
     setCalculation(`${calculation}${key}`);
