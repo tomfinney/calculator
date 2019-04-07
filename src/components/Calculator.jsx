@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const row1 = ["C", "E", "=", "*"];
 const row2 = ["7", "8", "9", "/"];
@@ -18,7 +18,9 @@ export default function Calculator() {
 
   function handleKeyPress(key) {
     if (key === "=") {
-      calculate([...parts, calculation]);
+      if (calculation !== "0") {
+        calculate([...parts, calculation]);
+      }
       return;
     }
     if (operators.includes(key)) {
@@ -41,8 +43,54 @@ export default function Calculator() {
     setCalculation(`${calculation}${key}`);
   }
 
+  const calcRef = useRef(null);
+  const isMoving = useRef(false);
+  const originX = useRef(null);
+  const originY = useRef(null);
+
+  function handleMouseDown(e) {
+    isMoving.current = true;
+  }
+
+  function handleMouseMove(e) {
+    if (!isMoving.current) {
+      return;
+    }
+    if (originX.current === null) {
+      originX.current = e.clientX;
+    }
+    if (originY.current === null) {
+      originY.current = e.clientY;
+    }
+
+    calcRef.current.style.left = `${Number(
+      calcRef.current.style.left.replace("px", "")
+    ) +
+      (e.clientX - originX.current)}px`;
+    calcRef.current.style.top = `${Number(
+      calcRef.current.style.top.replace("px", "")
+    ) +
+      (e.clientY - originY.current)}px`;
+
+    originX.current = e.clientX;
+    originY.current = e.clientY;
+  }
+  function handleEnd(e) {
+    isMoving.current = false;
+    originX.current = null;
+    originY.current = null;
+  }
+
   return (
-    <div className="calculator">
+    <div
+      className="calculator"
+      ref={calcRef}
+      style={{ top: 32, left: 32 }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleEnd}
+      onMouseLeave={handleEnd}
+    >
       <div className="calculatorBar">Calculator</div>
       <div className="calculatorInner">
         <div className="calculatorContent">

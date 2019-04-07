@@ -63,15 +63,15 @@ body {
 
 .main {
   height: calc(100% - 32px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
 
 .calculator {
   background-color: $colorBlack;
   border-radius: $radius;
   border: 1px solid $colorBlack;
+  display: inline-block;
+  position: absolute;
 }
 
 .calculatorBar {
@@ -81,6 +81,8 @@ body {
   border-top-left-radius: $radius;
   border-top-right-radius: $radius;
   border-bottom: 1px solid $colorBlack;
+  user-select: none;
+  cursor: pointer;
 }
 
 .calculatorInner {
